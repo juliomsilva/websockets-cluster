@@ -1,0 +1,31 @@
+{
+  "name": "websockets-cluster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.0",
+    "socket.io": "^2.2.0",
+    "socket.io-emitter": "^3.1.1",
+    "socket.io-redis": "^5.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.19.0"
+  },
+  "scripts": {
+    "docker:redis": "docker run --name test_redis -p 6379:6379 -d redis",
+    "start:server-1": "cross-env PORT=3001 nodemon",
+    "start:server-2": "cross-env PORT=3002 nodemon",
+    "start:server-3": "cross-env PORT=3003 nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
