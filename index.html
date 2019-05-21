@@ -1,26 +1,23 @@
-<div id="messages"></div>
-
 <button id="broadcast">Broadcast</button>
 
-<script src="/socket.io/socket.io.js"></script>
+<div id="messages"></div>
+
+<script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
 <script>
-  // The port number needs to be dynamic so we can
-  // Use this page on any port
-  var port = window.location.port,
-    socket = io.connect('http://localhost:' + port, {
-      transports: ['websocket', 'polling']
-    })
+  const socket = io.connect('http://127.0.0.1:8080', {
+    transports: ['websocket', 'polling']
+  })
 
   // Add new messages to the list
-  socket.on('message.received', function(port) {
-    var message = document.createElement('div')
-    message.innerHTML = `Received message from port ${port}`
+  socket.on('message.received', data => {
+    const message = document.createElement('div')
+    message.innerHTML = data
     document.getElementById('messages').appendChild(message)
   })
 
   // When the "broadcast" button is clicked,
   // We will send a message to the server to render the message
-  document.getElementById('broadcast').addEventListener('click', function() {
-    socket.emit('message.sent', port)
+  document.getElementById('broadcast').addEventListener('click', () => {
+    socket.emit('message.sent')
   })
 </script>

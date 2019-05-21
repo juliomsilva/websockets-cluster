@@ -5,22 +5,14 @@
 1. Run Docker:
 
 ```sh
-npm run docker:start
+docker-compose up --build
 ```
 
-2. Run 3 instances with:
+2. Open multiple tabs in your browser pointing at:
 
-```sh
-npm run start:server-1
-npm run start:server-2
-npm run start:server-3
-```
+> - <http://127.0.0.1/>
 
-3. Open 3 tabs in the browser, each one of them pointing to a specific service:
-
-> - <http://localhost:3001/>
-> - <http://localhost:3002/>
-> - <http://localhost:3003/>
+3. Watch the console for connections from different app instances.
 
 4. Broadcast a message and watch the magic.
 

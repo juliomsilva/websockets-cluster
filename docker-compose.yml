@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  app_1:
+    container_name: app_1
+    restart: always
+    build: .
+    networks:
+      - cluster
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+
+  app_2:
+    container_name: app_2
+    restart: always
+    build: .
+    networks:
+      - cluster
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+
+  app_3:
+    container_name: app_3
+    restart: always
+    build: .
+    networks:
+      - cluster
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+
+  web:
+    container_name: web
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - cluster
+    ports:
+      - '80:80'
+
+  lb:
+    container_name: lb
+    image: nginx:1.16.0-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - cluster
+    ports:
+      - '8080:8080'
+
+  redis:
+    container_name: redis
+    image: redis
+    networks:
+      - cluster
+
+networks:
+  cluster:

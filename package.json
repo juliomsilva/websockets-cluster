@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "socket.io": "^2.2.0",
     "socket.io-emitter": "^3.1.1",
@@ -20,10 +21,7 @@
     "nodemon": "^1.19.0"
   },
   "scripts": {
-    "docker:redis": "docker run --name test_redis -p 6379:6379 -d redis",
-    "start:server-1": "cross-env PORT=3001 nodemon",
-    "start:server-2": "cross-env PORT=3002 nodemon",
-    "start:server-3": "cross-env PORT=3003 nodemon"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
