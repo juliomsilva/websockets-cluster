@@ -7,7 +7,9 @@
   // The port number needs to be dynamic so we can
   // Use this page on any port
   var port = window.location.port,
-    socket = io.connect('http://localhost:' + port)
+    socket = io.connect('http://localhost:' + port, {
+      transports: ['websocket', 'polling']
+    })
 
   // Add new messages to the list
   socket.on('message.received', function(port) {
